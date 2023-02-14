@@ -1,39 +1,42 @@
-import classes as c
 import functions as f
-def Aldrich_Park_Start(game):
-    directions = ["left", "right", "forward"]
-    # f.slow_print("It's a beautiful sunny day in Aldrich Park! The birds are singing. But what's this?")
-    print("It's a beautiful sunny day in Aldrich Park! The birds are singing. But what's this?")
+import characters as c
+import string
 
-    # f.slow_print("(1) To your left you see a poor old man stumbling in the grass.")
-    print("(1) To your left you see a poor old man stumbling in the grass.")
-
-    # f.slow_print("(2) To your right you see a beautiful patch of grass that looks perfect for napping.")
-    print("(2) To your right you see a beautiful patch of grass that looks perfect for napping.")
-
-    # f.slow_print("(3) In front of you, you see a coupon for a free drink at Cha.")
-    print("(3) In front of you, you see a coupon for a free drink at Cha.")
-
-    userInput = ""
-    # f.slow_print("Would you like to move \"left\", \"right\", or \"forward\"?")
-
-    userInput = f.get_input()
-
-    if userInput == "1":
-        print("Oh no! It's Swag Man and he's lookin at you like a snack!")
-        game.Swag_Man()
-        Aldrich_Park_Left1(game)
+class Location:
+    def __init__(self, desc, fight = None):
+        self.desc = desc
+        # self.alphabet = list(string.ascii_lowercase)[::-1]
+        self.nums = ["4", "3", "2", "1"]
+        self.options = {} #the children
+        self.promptResponse = None
+        self.fight = fight
         
-    elif userInput == "2":
-        print("You fall asleep... You wake up to Gloria Mark eating you alive.")
+    def addChild(self, childLoc, optionText:str):
+        self.options[self.nums.pop()] = [childLoc, optionText]
 
-    elif userInput == "3":
-        print("You pick up the Cha coupon! Wow what a deal!")
-        game.player.inventory.append("Cha coupon")
-        
+    def displayPrompt(self):
+        f.slow_print(self.desc)
 
-def Aldrich_Park_Left1(game):
-    f.slow_print("Swag Man's dead, rotting body is laying at your feet. Yuck!")
-    f.slow_print("(1) Search his body?")
-    f.slow_print("(2) Continue forward.")
-    f.slow_print("(3) Go back to where you started.")
+        for letter, option in self.options.items():
+            print("{}: {}".format(letter, option[1]))
+            
+    def addChildren(self, listOfChildren):
+        for child in listOfChildren:
+            self.options[self.nums.pop()] = [child[0], child[1]]
+
+    def askPrompt(self): #returns next location
+        self.displayPrompt()
+
+        if not self.options:
+            print("There are no options to go anywhere from here. THE END")
+            return
+            
+        while self.promptResponse == None:
+            response = input(">> ")
+            if response in self.options:
+                return self.options[response][0]
+            print("That is not an available option!")
+
+    def Fight(self, player):
+        character = eval("c." + self.fight + "(player)")
+        return character.fight()
