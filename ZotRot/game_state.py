@@ -19,21 +19,41 @@ class GameState:
 
     def Location_Init(self):
         # this sets up the graph, and initializes the current location to be the game's starting location
+        
+######################################################################################## Aldrich Park    
         Aldrich_Park = l.Location("\
 It's another wonderful sunny afternoon at UCI! \
 You're walking through Aldrich Park to get to your next class \
-but you notice a few different things.\n",)
-        Aldrich_Park_Left1 = l.Location("\
-\"Umm hey dude! You doin alright?\" \
-He lurches toward you... Dun dun dUN!!!", "SwagMan")
-        ALP = l.Location("Wow what a great piece of architecture!")
-
-        Aldrich_Park_Right1 = l.Location("Wow you moved to your right!")
-        Aldrich_Park.addChildren([(Aldrich_Park_Left1, "To your left you see an old man stumbling through the park."),
-                               (Aldrich_Park_Right1, "To your right you see something shiny hiding in the grass."),
-                               (ALP, "In front of you is the Anteater Learning Pavilion!")])
+but you notice a few different things.\n")
         
+        ICS = l.Location("\
+You look around at the ICS buildings as you stand in the quad...", "SwagMan")
+        
+        ALP = l.Location("You come up on the Anteater Learning Pavilion, wow what a great work of \
+architecture!")
 
+        Student_Center = l.Location("You make your way to the Student Center and you begin to notice an awful smell.")
+
+        Aldrich_Park.addChildren([(ICS, "To your left you see the ICS buildings and you hear a commotion over there."),
+                                (Student_Center, "To your right you see the road leading to the Student Center."),
+                                (ALP, "In front of you is the Anteater Learning Pavilion!")])
+######################################################################################## ALP
+        BioSci = l.Location("The Science Library towers over you.")
+        Humanities = l.Location("Old buildings with old book smells.")
+        Steinhaus = l.Location("You've never had a class here before... what even is this?")
+        
+        ALP.addChildren([(BioSci, "Blah"),
+                         (Humanities, "Blah"),
+                         (Steinhaus, "Blah")])
+######################################################################################## Student Center
+        
+######################################################################################## ICS
+
+######################################################################################## BioSci
+
+######################################################################################## Humanities
+
+######################################################################################## Steinhaus
         self.currentLocation = Aldrich_Park
 
         Student_Center = l.Location("You're in the student center")
