@@ -15,9 +15,10 @@ class Location:
     def addChild(self, childLoc, optionText:str):
         self.options[self.nums.pop()] = [childLoc, optionText]
 
-    def displayPrompt(self):
+    def printDesc(self):
         f.slow_print(self.desc)
 
+    def displayPrompt(self):
         for num, option in self.options.items():
             print("{}: {}".format(num, option[1]))
             
@@ -26,8 +27,8 @@ class Location:
             self.options[self.nums.pop()] = [child[0], child[1]]
 
     def askPrompt(self): #returns next location
-        self.displayPrompt()
 
+        self.displayPrompt()
         if not self.options:
             return
             

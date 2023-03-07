@@ -1,7 +1,7 @@
 import sys, time, random
 
-TYPING_SPEED = 500
-VALID_INPUTS = ["1", "2", "3"]
+TYPING_SPEED = 50000
+# VALID_INPUTS = ["1", "2", "3"]
 
 def slow_print(string, wpm = TYPING_SPEED):
     for char in string:
@@ -10,7 +10,11 @@ def slow_print(string, wpm = TYPING_SPEED):
         time.sleep((random.random()*10.0)/wpm)
     print()
 
-def get_input():
+def get_input(args = 3):
+    VALID_INPUTS = []
+    for i in range(1, args+1):
+        VALID_INPUTS.append(str(i))
+
     userInput = input(">> ")
     print()
     if (userInput not in VALID_INPUTS):
