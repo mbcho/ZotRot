@@ -33,6 +33,7 @@ def get_binary():
     else:
         return userInput
 
+
 def game_over():
     slow_print("The game is over. Would you like to play again?")
     print("1: Yes")
