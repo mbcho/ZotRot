@@ -71,38 +71,43 @@ particular has correctly identified the only food source in the area.\n", "ICSZo
         
         SocialSci = l.Location("Social Sciences")
         
-        InsideICS = l.Location("If there’s any way you’re getting out of this alive, it’s not going to be alone. \n\
-Humans historically have gotten their way out of situations by combining their strengths, after all. And if that guy you just \n\
-saw running past you is any bit sane still, it’s going to be the best you’ve got. He seems to have been sprinting for stairs \n\
-at the ICS building. You’d better hurry before he gets too far ahead of you! As you fumble into the stairwell and shout after him, \n\
-his panicked steps halt for a moment. “Another one? What’s your name?” You answer in kind. “Okay, that’s enough proof for me”, \n\
-he says, running back down to shake your hand. “I’m Jerry. We can save the pleasantries for later. The building is secure for the most part; \n\
-everyone that’s part of this small band of survivors is hard at work boarding up any windows and entrances. You’re lucky to have seen me run in \n\
-the one entrance that’s not yet boarded up! Quickly, put this cart in front of the door then meet us all in the counselor’s office. Wasi says he \n\
-knows a guy in Bio that might have an idea of what’s going on here. There might still be hope for us all!” As you supplant the supplies cart \n\
-in the way of the door, you ponder this thought. ‘A guy in bio’… do they have a cure? You chuckle a bit at your miraculous luck and join the \n\
-rest of the crew holed up in the conference room. As you enter the modestly-sized room on the third floor, Jerry waves you in and pats at a seat, \n\
-the chairs arranged in a haphazard circle. “All right, y’all. This is a lucky survivor I found outside. Don’t worry, I made sure they’re clean. \n\
-Their name is " + self.player.name + ". " + self.player.name + ", this is Dejian, Wasi, and Kyle. As far as I know, we’re the only survivors in this mess.” Wasi speaks up. \n\
-“There’s supposed to be two more people here, Matt and Dharren, but they have already gone towards BioSci in order to prepare a station for a cure. \n\
-Matt’s the one who has that knowledge and Dharren went to protect him. They don’t have all the materials yet; that’s what the two of them told us to \n\
-get before joining them there. That was some time ago, though, so things have gotten much worse in the meantime. I hope they’re okay.” Dejian follows. \n\
-“There are a few materials that we’ll need to make the cure. The idea is a back-mounted tank that holds the cure with a handheld nozzle. We’ll run \n\
-around and spray the zombies with the cure! However, we’re going to need the materials for the cure, three things to be exact. Zombie flesh, \n\
-Gas masks, and a Chemically-resistant spray tank. With the whole campus falling apart, we don’t really have a choice here; we’re going to have to \n\
-split up.” Another survivor, Kyle, speaks up. “The zombie outbreak started at Rowland Hall, at least that’s what we think. \n\
-If we’re going to find the most zombified flesh of all zombified flesh, it’s going to be there. Gas masks can be found in many different locations \n\
-across the scientific side here, but the natural sciences building will have those in spades. A chemically-resistant spray tank is an oddity, \n\
-but we should be able to find one in physical sciences.” He points to a scooter that’s standing at the side of the stand. He then looks at you. \n\
-“That scooter’s mine but it might as well be ours at this point. It’s electric and big enough to carry two people, but it’s only got enough power \n\
-to go to one of these places and back. It should get you past all the pathway shamblers without a problem, although I don’t think it’d be all that \n\
-useful when fighting in the actual buildings. I’ll let you use it since you managed to survive getting here all alone unlike the rest of us. \n\
-But where are you headed? You can go to Rowland Hall with Jerry, Natural Sciences with Dejian, or Physical Sciences with Wasi. Where are you going?\n")
+        InsideICS = l.Location("If there’s any way you’re getting out of this alive, it’s not going to be alone. Humans historically have gotten their \n\
+way out of situations by combining their strengths, after all. And if that guy you just saw running past you is any bit sane still, it’s going to be the best \n\
+you’ve got. He seems to have been sprinting for stairs at the ICS building. You’d better hurry before he gets too far ahead of you! \n\
+As you fumble into the stairwell and shout after him, his panicked steps halt for a moment. “Another one? What’s your name?” \n\
+You answer in kind. \n\
+“Okay, that’s enough proof for me”, he says, running back down to shake your hand. “I’m Jerry. We can save the pleasantries for later. \n\
+The building is secure for the most part; everyone that’s part of this small band of survivors is hard at work boarding up any windows and entrances. \n\
+You’re lucky to have seen me run in the one entrance that’s not yet boarded up! Quickly, put this cart in front of the door then meet us all in the \n\
+counselor’s office. Wasi says he knows a guy in Bio that might have an idea of what’s going on here. There might still be hope for us all!” \n\
+As you supplant the supplies cart in the way of the door, you ponder this thought. ‘A guy in bio’… do they have a cure? You chuckle a bit at your \n\
+miraculous luck and join the rest of the crew holed up in the conference room. \n\
+As you enter the modestly-sized room on the third floor, Jerry waves you in and pats at a seat, the chairs arranged in a haphazard circle. \n\
+“All right, y’all. This is a lucky survivor I found outside. Don’t worry, I made sure they’re clean. Their name is \n" \
++ self.player.name + ". " + self.player.name + ", this is Dejian, Wasi, and Kyle. As far as I know, we’re the only survivors in this mess. \n\
+Wasi speaks up. “There’s supposed to be two more people here, Matt and Dharren, but they have already gone towards BioSci in order to prepare a \n\
+station for a cure. Matt’s the one who has that knowledge and Dharren went to protect him. They don’t have all the materials yet; that’s what the two \n\
+of them told us to get before joining them there. That was some time ago, though, so things have gotten much worse in the meantime. I hope they’re okay.”\n\
+Dejian follows. “There are a few materials that we’ll need to make the cure. The idea is a back-mounted tank that holds the cure with a handheld nozzle. \n\
+We’ll run around and spray the zombies with the cure! However, we’re going to need the materials for the cure, three things to be exact. \n\
+Zombie flesh, Gas masks, and a Chemically-resistant spray tank. With the whole campus falling apart, we don’t really have a choice here; we’re going to \n\
+have to split up.”\n\
+Another survivor, Kyle, speaks up. “The zombie outbreak started at Rowland Hall, at least that’s what we think. If we’re going to find the most \n\
+zombified flesh of all zombified flesh, it’s going to be there. Gas masks can be found in many different locations across the scientific side here, \n\
+but the natural sciences building will have those in spades. A chemically-resistant spray tank is an oddity, but we should be able to find one in \n\
+physical sciences.”\n\
+He points to a scooter that’s standing at the side of the stand. He then looks at you.\n\
+“That scooter’s mine but it might as well be ours at this point. It’s electric and big enough to carry two people, but it’s only got enough \n\
+power to go to one of these places and back. It should get you past all the pathway shamblers without a problem, although I don’t think it’d be all \n\
+that useful when fighting in the actual buildings. I’ll let you use it since you managed to survive getting here all alone unlike the rest of us. \n\
+But where are you headed?\n\
+You can go to Rowland Hall with Jerry, Natural Sciences with Dejian, or Physical Sciences with Wasi. Where are you going?")
+
 
         OutsideICS = l.Location("WHERE GO")
         # if self.joinGroup:
         ICS1.addChildren([(InsideICS, "Follow him?"),
-                         (OutsideICS, "Stay away that's shady as hell...")])
+                         (OutsideICS, "Stay away that's too shady...")])
         # else:
 ######################################################################################## BioSci - good ending requires materials
         # ChemLab = l.Location("It's the chemistry lab with lots of beakers, vials, and... meth?")
@@ -125,10 +130,16 @@ He becomes angry at their incompetence and slaughters them one by one. Soon ther
         # Split with Continue?
         RingRoad = l.Location("As they make their way through the Ring Road, they can hear the sound of growling and moaning in the distance. \n\
 The once-bustling walkways are now filled with hordes of undead creatures, all searching for their next meal. The group moves cautiously, \n\
-trying to avoid drawing attention to themselves, but it's becoming more and more difficult. The scent of humans seems to linger in the air, \n\
-a reminder that the zombies are always close by. The group can't let their guard down for even a moment, knowing that one misstep could mean the \n\
-end for them all. The trip to gather materials that was once a routine task has now become a perilous journey through a campus overrun by the undead. \n\
-Despite the danger, the group knows that they must continue on and create a cure. \n", "Gloria Mark")
+trying to avoid drawing attention to themselves, but it's becoming more and more difficult.\n\
+The scent of humans seems to linger in the air, a reminder that the zombies are always close by. The group can't let their guard down for even a moment, \n\
+knowing that one misstep could mean the end for them all. The trip to gather materials that was once a routine task has now become a perilous journey through \n\
+a campus overrun by the undead..\n\
+\n\
+Despite the danger, the group knows that they must continue on. They need to create the cure to survive, and the only way to do that is to brave the \n\
+treacherous route through the campus. With each step they take, they hope that they'll make it to BioSci alive.\n\
+As the group makes their way through Ring Road. They see a zombie stumbling towards them. They know this fight is unavoidable and prepare to fight. \n\
+Unexpectedly, Wasi is trembling in fear. Unsure of what’s causing him to break down, you look at the zombie’s blank and lifeless eyes. Its face seems familiar. \n\
+It’s skin is droopy, but it’s clothes are recognizable. A wave of agony hits you as she screams, it's our former Professor Gloria Mark.\n", "GloriaMark")
 
         RingRoad.addChildren([(BioSci, "Venture onward to BioSci! To the cure!")])
 
@@ -170,16 +181,20 @@ and then they pounce.\n", "NatSciBoss")
 The building is filled with zombies that are unlike anything either of you have seen before. They are all in the open surrounding \n\
 the building dancing, hugging, and profusely moving their jaws. Their body compositions are fat but light. They are moving like \n\
 brillant dancers yet are the size of sumo wrestlers. Unable to understand what is happening, Wasi and you hide in a bush where you \n\
-find a crossbow with 24 arrows. Wasi and you realize that the zombies are partying, however they have no music. Wasi tells you to wait \n\
+find a crossbow with 24 arrows. \n\
+\n***" + self.player.name + " has found: Crossbow and Arrows***\n\n\
+Wasi and you realize that the zombies are partying, however they have no music. Wasi tells you to wait \n\
 for his cue and begins sprinting to the Cafe Espresso across the quad. Moments pass, and you hear… ”BRING OUT THE LAZERS, \n\
 BRING OUT THE LAZERS, BRING OUT THE LAZERS.” The zombies immediately head over banging their deformed heads. You sneak into the \n\
 building. With your prior knowledge, you quickly find the tank and load it onto a cart. As you come back into the open, you see \n\
-Wasi running to you. You notice the music has stopped, and the zombies are chasing 50 yards behind.\n", "SquirrelHorde")
+Wasi running to you. You notice the music has stopped, and the zombies are chasing 50 yards behind.\n", "BloatedHorde")
 
         Rowland = l.Location("Jerry and you stealthily sneak into Rowland Hall. Jerry needs to take a piss, \n\
 and you both navigate to the safest restroom you can find. As you enter the room, there is a deceased UCI student behind the door. \n\
 With her eyes staring into Jerry’s, he could not contain it anymore. While Jerry is cleaning up, you examine the \n\
 corpse and find a baseball bat with nails on its body. You quickly remove the weapon, and head out with Jerry. \n\
+\n***" + self.player.name + " has found: Spiky Baseball Bat***\n\
+***Attack +2***\n\n\
 Terrified of being trapped on higher floors, you begin on the first floor. You are unable to find a dead zombie, and move into \n\
 the second floor. You both question how this is possible. There should be zombies everywhere yet there are none. Floor by floor \n\
 you make your way onto the fifth floor. Here the air is ominous. As you are clearing out a room, there is a shriek down the hall. \n\
@@ -187,9 +202,9 @@ You venture down the hall and discover what had happened.  A single zombie gaine
 zombie it ate. It feasted on the whole building and just finished off its last victim. You, shitting bricks, decide to retreat into \n\
 the hallway. Jerry, the brave man he is, decides to lure it out into the open...\n", "RowlandBoss")
 
-        InsideICS.addChildren([(Rowland, "Go to Rowland Hall"),
-                               (NaturalScience, "Go to Natural Sciences"),
-                               (PhysicalScience, "Go to Physical Sciences")])
+        InsideICS.addChildren([(Rowland, "Go to Rowland Hall with Jerry"),
+                               (NaturalScience, "Go to Natural Sciences with Dejian"),
+                               (PhysicalScience, "Go to Physical Sciences with Wasi")])
 
 ######################################################################################## Rowland Hall - start of disease
         RowlandBasement = l.Location("Home of the nuclear reactor! Maybe that's what started this whole thing.")
@@ -208,7 +223,7 @@ the hallway. Jerry, the brave man he is, decides to lure it out into the open...
 
 
 ######################################################################################## Init
-        self.currentLocation = AldrichPark
+        self.currentLocation = RingRoad
         self.pastLocations.append(AldrichPark)
 
         

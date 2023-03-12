@@ -1,6 +1,6 @@
 import sys, time, random
 
-TYPING_SPEED = 50000
+TYPING_SPEED = 500000
 # VALID_INPUTS = ["1", "2", "3"]
 
 def slow_print(string, wpm = TYPING_SPEED):
