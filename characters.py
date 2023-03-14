@@ -11,13 +11,13 @@ class Character:
 
     def change_hp(self, i):
         self.hp += i
-        if self.hp < 0:
+        if self.hp <= 0:
             self.hp = 0
         elif self.hp > self.maxhp:
             self.hp = self.maxhp
 
     def check_dead(self):
-        if self.hp == 0:
+        if self.hp <= 0:
             return True
         else:
             return False
@@ -33,6 +33,13 @@ class Player(Character):
         "charisma": 1,
         "luck": 1
         }
+
+    def change_max_hp(self, i):
+        self.maxhp += i
+        if self.hp > self.maxhp:
+            self.hp = self.maxhp
+        if self.maxhp < 0:
+            self.hp = 0
 
 
 
@@ -53,7 +60,7 @@ class ParkZombie(Character):
 
     def event(self):
         action = ""
-        f.slow_print("He's lookin at you like a snack...")
+        f.slow_print("He's lookin at you like a snack...\n")
         while (self.alive):
             print("Hungry Dude's Current Health: " + str(self.hp) + "/" + str(self.maxhp))
             print(self.player.name + "'s Current Health: " + str(self.player.hp) + "/" + str(self.player.maxhp))
@@ -64,13 +71,13 @@ class ParkZombie(Character):
             action = f.get_input()
 
             if (action == "1"):
-                f.slow_print("You give him a nice slap in the face.")
+                f.slow_print("You give him a nice slap in the face.\n")
                 self.change_hp(-(self.player.stats["attack"] + random.choices([0, 1, 2], [0.2, 0.5, 0.3])[0]))
             elif (action == "2"):
-                f.slow_print("You approach him and ask if he needs help... He reaches for you and scratches you with his crusty nails..")
+                f.slow_print("You approach him and ask if he needs help... He reaches for you and scratches you with his crusty nails..\n")
                 self.player.change_hp(-(1 - self.player.stats["defense"]))
             elif (action == "3"):
-                f.slow_print("YOU KICK HIM RIGHT WHERE IT HURTS!")
+                f.slow_print("YOU KICK HIM RIGHT WHERE IT HURTS!\n")
                 self.change_hp(-(self.player.stats["attack"] + random.choices([0, 3, 4], [0.6, 0.2, 0.2])[0]))
             if (self.player.check_dead()):
                 f.slow_print("That's a zombie not some hungry dude! He eats you alive lol")
@@ -103,9 +110,9 @@ that's not some hungry dude that's a zombie!\n")
     def enemy_action(self):
         action = random.choices(["1", "2"], [0.5, 0.5])
         if (action == ['1']):
-            f.slow_print("The dude growls at you angrily... What a weird guy.")
+            f.slow_print("The dude growls at you angrily... What a weird guy.\n")
         elif (action == ['2']):
-            f.slow_print("He stumbles around... You good?")
+            f.slow_print("He stumbles around... You good?\n")
 
 class ICSZombie(Character):
     def __init__(self, player):
@@ -125,25 +132,25 @@ class ICSZombie(Character):
             action = f.get_input()
 
             if (action == "1"):
-                f.slow_print("You punch him in the freaking face")
+                f.slow_print("You punch him in the freaking face\n")
                 self.change_hp(-(self.player.stats["attack"] + random.choices([0, 1, 2], [0.2, 0.5, 0.3])[0]))
             elif (action == "2"):
-                f.slow_print("Maybe a hug will heal all! He bites you.")
+                f.slow_print("Maybe a hug will heal all! He bites you.\n")
                 self.player.change_hp(-(2 - self.player.stats["defense"]))
             elif (action == "3"):
-                f.slow_print("You ask him for help with your code. He doesn't know recursion!!!")
+                f.slow_print("You ask him for help with your code. He doesn't know recursion!!!\n")
                 self.change_hp(-(self.player.stats["attack"] + random.choices([0, 7], [0.8, 0.2])[0]))
             if (self.player.check_dead()):
                 f.slow_print("You may have gotten away from the park zombie, but it seems your luck has \n\
 very quickly and suddenly run out. With an unnatural sensation coursing through your veins as the zombie releases \n\
-its bite, you feel… hungry. Ravenous. You must feed. Brains. Braaaaaaaaaaaaaiiiiiins.")
+its bite, you feel… hungry. Ravenous. You must feed. Brains. Braaaaaaaaaaaaaiiiiiins.\n")
                 return self.player
             if (self.check_dead()):
                 self.alive = False
                 break
             self.enemy_action()
         f.slow_print("He falls, killed for the second time.")
-        f.slow_print("You notice the zombie is holding a nice laptop and wearing a nice cap.")
+        f.slow_print("You notice the zombie is holding a nice laptop and wearing a cool cap.")
         print("1: Take laptop")
         print("2: Take cap")
         action = f.get_binary()
@@ -169,10 +176,10 @@ Time is ticking. That one zombie you just felled was only one of many, and the s
     def enemy_action(self):
         action = random.choices(["1", "2"], [0.7, 0.3])
         if (action == ['1']):
-            f.slow_print("He reaches out and scratches you! Yeeeowch!")
-            self.player.change_hp(-(3-self.player.stats["defense"]))
+            f.slow_print("He reaches out and scratches you! Yeeeowch!\n")
+            self.player.change_hp(-(2-self.player.stats["defense"]))
         elif (action == ['2']):
-            f.slow_print("He stumbles around... Can't touch this.")
+            f.slow_print("He stumbles around... Can't touch this.\n")
 
 class RowlandBoss(Character):
     def __init__(self, player):
@@ -198,11 +205,11 @@ class RowlandBoss(Character):
                 f.slow_print("Hey batter batter SWING!!\n")
                 self.change_hp(-(self.player.stats["attack"] + random.choices([1, 2, 3], [0.2, 0.5, 0.3])[0]))
             elif (action == "2"):
-                temp = random.choices([0, 20], [0.9, 0.1])[0]
+                temp = random.choices([0, 1], [0.9, 0.1])[0]
                 if temp == 0:
                     f.slow_print("Just one rating among many!!!\n")
                     self.change_hp(-1)
-                elif temp == 20:
+                elif temp == 1:
                     f.slow_print("\"NOO 0% WOULD TAKE MY CLASS AGAIN\" he wails as he melts into a puddle of sadness.\n")
                     self.change_hp(-20)
             elif (action == "3"):
@@ -218,7 +225,7 @@ As he hungrily places you into his mouth your consciousness fades... *GULP*")
 
             self.enemy_action()
 
-        f.slow_print("You defeat him and retrieve a small piece of his flesh. Yummy!")
+        f.slow_print("You finally defeat the zombified Professor Gopi and retrieve a small piece of his flesh. Yummy!")
         f.slow_print("***" + self.player.name + " has found: Zombie Flesh***\n")
         self.player.inventory.append("Zombie Flesh")
 
@@ -227,19 +234,19 @@ As he hungrily places you into his mouth your consciousness fades... *GULP*")
     def enemy_action(self):
         action = random.choices(["1", "2", "3"], [0.6, 0.2, 0.2])
         if (action == ['1']):
-            f.slow_print("He hurls a big rock at you!!")
+            f.slow_print("He hurls a big rock at you!!\n")
             self.player.change_hp(-(3 - self.player.stats["defense"]))
         elif (action == ['2']):
-            f.slow_print("He spews acid at you out of his nose!!")
+            f.slow_print("He spews acid at you out of his nose!!\n")
             self.player.change_hp(-(1 + random.choices([1, 2, 3], [0.33, 0.33, 0.33])[0] - self.player.stats["defense"]))
         elif (action == ['3']):
-            f.slow_print("PROFESSOR GOPI THROWS A RADIOACTIVE ROCK AT YOU WATCH OUT!!!")
+            f.slow_print("PROFESSOR GOPI THROWS A RADIOACTIVE ROCK AT YOU WATCH OUT!!!\n")
             chance = random.choices([1, 2], [0.1, 0.9])[0]
             if (chance == 1):
-                f.slow_print("IT HITS YOU AHHHHHHHH")
+                f.slow_print("IT HITS YOU AHHHHHHHH\n")
                 self.player.change_hp(-(10 - self.player.stats["defense"]))
             elif (chance == 2):
-                f.slow_print("You lunge out of the way. Phew!")
+                f.slow_print("You lunge out of the way. Phew!\n")
 
 class NatSciBoss(Character):
     def __init__(self, player):
@@ -265,37 +272,37 @@ class NatSciBoss(Character):
             action = f.get_input()
 
             if (action == "1"):
-                f.slow_print("You stomp your spiked feet and feel crunching...")
+                f.slow_print("You stomp your spiked feet and feel crunching...\n")
                 self.change_hp(-(self.player.stats["attack"] + random.choice([2, 3, 5], [0.33, 0.33, 0.33])[0]))
 
             elif (action == "2"):
                 chance = random.choice([1, 2], [0.5, 0.5])[0]
                 if chance == 1:
-                    f.slow_print("You swing and swing with your bat but the targets are too small and too many!")
+                    f.slow_print("You swing and swing with your bat but the targets are too small and too many!\n")
                 elif chance == 2:
-                    f.slow_print("You sweep your bat along the ground and hit some of them!")
+                    f.slow_print("You sweep your bat along the ground and hit some of them!\n")
                     self.change_hp(-(self.player.stats["attack"]))
 
             elif (action == "3"):
-                f.slow_print("You throw some old carrot sticks on the ground...")
+                f.slow_print("You throw some old carrot sticks on the ground...\n")
                 chance = random.choice([1, 2], [0.4, 0.6])[0]
                 if chance == 1:
-                    f.slow_print("The zombunnies are hungry for MEAT! They lunge at you.")
+                    f.slow_print("The zombunnies are hungry for MEAT! They lunge at you.\n")
                     self.player.change_hp(-(5 - self.player.stats["defense"]))
                 elif chance == 2:
-                    f.slow_print("Some of the zombunnies forget that they're carnivores and get distracted.")
+                    f.slow_print("Some of the zombunnies forget that they're carnivores and get distracted.\n")
                     self.change_hp(-(random.choice([4, 5, 6], [0.33, 0.33, 0.33])[0]))
 
             if (self.player.check_dead()):
                 f.slow_print("You fall to the ground, unable to do anything as the zombunnies begin to pile on top of you \
-and consume.")
+and consume.\n")
                 return self.player
             if (self.check_dead()):
                 self.alive = False
                 break
             self.enemy_action()
 
-            f.slow_print("You defeat him and get gas masks")
+            f.slow_print("You defeat them and retrieve the gas masks!")
             f.slow_print("***" + self.player.name + " has found: Gas Masks***\n")
             self.player.inventory.append("Gas Masks")
 
@@ -304,12 +311,12 @@ and consume.")
     def enemy_action(self):
         action = random.choices(["1", "2", "3"], [0.6, 0.3, 0.1])
         if (action == ['1']):
-            f.slow_print("The zombunnies nibble at your little toes!")
+            f.slow_print("The zombunnies nibble at your little toes!\n")
             self.player.change_hp(-(3 + random.choice([3, 4, 5], [0.33, 0.33, 0.33])[0] - self.player.stats["defense"]))
         elif (action == ['2']):
-            f.slow_print("The zombunnies lunge... They're closing in!")
+            f.slow_print("The zombunnies lunge... They're closing in!\n")
         elif (action == ['3']):
-            f.slow_print("The zombunnies have reached you!!! NOOOOOOO OUCH THE ZOMBUNNY BARRAGE!")
+            f.slow_print("The zombunnies have reached you!!! NOOOOOOO OUCH THE ZOMBUNNY BARRAGE!\n")
             self.player.change_hp(-(10 - self.player.stats["defense"]))
 
 class BloatedHorde(Character):
@@ -335,15 +342,15 @@ class BloatedHorde(Character):
 
             if (action == "1"):
                 dmg = random.choices([3, 4, 5], [0.33, 0.33, 0.33])[0]
-                f.slow_print("You fire a cross bow bolt, piercing " + str(dmg) + " of their bodies and they explode")
+                f.slow_print("You fire a cross bow bolt, piercing " + str(dmg) + " of their bodies and they explode.\n")
                 self.change_hp(-dmg)
                 self.bolts -= 1
             elif (action == "2"):
                 distanceBack = random.choices([1, 2, 3], [0.3, 0.2, 0.5])[0]
-                f.slow_print("You retreat back " + str(distanceBack) + " yards")
+                f.slow_print("You retreat back " + str(distanceBack) + " yards.\n")
                 self.distance += distanceBack
             elif (action == "3"):
-                f.slow_print("You reach forward and poke one of the zombies with a long fingernail and he explodes splashing all over you.")
+                f.slow_print("You reach forward and poke one of the zombies with a long fingernail and he explodes splashing all over you.\n")
                 self.change_hp(-1)
                 self.player.change_hp(-(random.choices([3, 4, 5], [0.33, 0.33, 0.33])[0] - self.player.stats["defense"]))
             if (self.player.check_dead()):
@@ -354,7 +361,7 @@ watch helplessly as they descend upon you...")
                 self.alive = False
                 break
             if (self.distance <= 0):
-                f.slow_print("The bloated horde has reached you and everything fades as they begin their feast...")
+                f.slow_print("The bloated horde has reached you and everything fades as they begin their feast...\n")
                 self.player.change_hp(-999)
                 return self.player
             self.enemy_action()
@@ -368,7 +375,7 @@ watch helplessly as they descend upon you...")
 
     def enemy_action(self):
         distanceForward = random.choices([5, 7, 20], [0.2, 0.75, 0.05])[0]
-        f.slow_print("The horde rushes forward another " + str(distanceForward) + " yards!")
+        f.slow_print("The horde rushes forward another " + str(distanceForward) + " yards!\n")
         self.distance -= distanceForward
 
 class GloriaMark(Character):
@@ -391,15 +398,15 @@ class GloriaMark(Character):
 
             if (action == "1"):
                 n = random.choices([1, 2, 3, 4, 5], [0.2, 0.1, 0.3, 0.3, 0.1])[0]
-                f.slow_print("The five of you attack all at once!! " + str(n) + " of your attacks hit!")
+                f.slow_print("The five of you attack all at once!! " + str(n) + " of your attacks hit!\n")
                 self.change_hp(-(n * 2))
             elif (action == "2"):
-                f.slow_print("She cringes at your awful display of mismanagement!")
+                f.slow_print("She cringes at your awful display of mismanagement!\n")
                 n = random.choices([3, 4, 5], [0.33, 0.33, 0.33])[0]
-                self.change_hp(-n)
+                self.change_hp(-(n + self.player.stats["attack"]))
             elif (action == "3"):
-                f.slow_print("You participate well in class. Her patience is sated!")
-                self.patience = 2
+                f.slow_print("You participate well in class. Her patience is sated!\n")
+                self.patience = 3
             if (self.player.check_dead()):
                 f.slow_print("Dang bro you died.")
                 return self.player
@@ -409,18 +416,18 @@ class GloriaMark(Character):
             self.enemy_action()
 
         f.slow_print("You defeat her Professor Mark and finally you can make your way to BioSci! You notice she was carrying \n\
-some food with her and you take it for yourself.")
-        f.slow_print("***" + self.player.name + "'s health has been restored!")
+some food with her and you take it for yourself.\n")
+        f.slow_print("***" + self.player.name + "'s health has been restored!***\n")
         self.player.change_hp(100)
         return self.player
 
     def enemy_action(self):
-        n = random.choices([1, 2, 3], [0.5, 0.25, 0.25])[0]
+        n = random.choices([1, 2], [0.5, 0.5])[0]
         if (n == 1):
-            f.slow_print("Professor Mark is losing patience...")
+            f.slow_print("Professor Mark is losing patience...\n")
             self.patience -= 1
             if (self.patience == 0):
-                f.slow_print("The Professor has lost her patience!!! Yeeeeowch!")
+                f.slow_print("The Professor has lost her patience!!! Yeeeeowch!\n")
                 self.player.change_hp(-(7 - self.player.stats["defense"]))
         elif (n == 2):
             f.slow_print("Professor Mark presents you with a Project Management question!\n")
@@ -437,10 +444,10 @@ some food with her and you take it for yourself.")
             answer = f.get_input()
 
             if (answer != "2"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 2):
             f.slow_print("What are the three elements of the triple constraint?")
@@ -451,10 +458,10 @@ some food with her and you take it for yourself.")
             answer = f.get_input()
 
             if (answer != "1"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 3):
             f.slow_print("Which of the following is not part of the three-sphere model for systems management?")
@@ -465,10 +472,10 @@ some food with her and you take it for yourself.")
             answer = f.get_input()
 
             if (answer != "2"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 4):
             f.slow_print("A ____________ is a series of actions directed toward a particular result.")
@@ -479,10 +486,10 @@ some food with her and you take it for yourself.")
             answer = f.get_input()
 
             if (answer != "3"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 5):
             f.slow_print("A ____________ is a document that formally recognizes the existence of a project and provides direction on \n\
@@ -494,10 +501,10 @@ the project’s objectives and management.")
             answer = f.get_input()
 
             if (answer != "1"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 6):
             f.slow_print("A ____________ is a deliverable-oriented grouping of the work involved in a project that defines its total scope.")
@@ -508,10 +515,10 @@ the project’s objectives and management.")
             answer = f.get_input()
 
             if (answer != "1"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 7):
             f.slow_print("What symbol on a Gantt chart represents a slipped milestone?")
@@ -522,10 +529,10 @@ the project’s objectives and management.")
             answer = f.get_input()
 
             if (answer != "3"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 8):
             f.slow_print("What is the main goal of project cost management?")
@@ -536,10 +543,10 @@ the project’s objectives and management.")
             answer = f.get_input()
 
             if (answer != "1"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 9):
             f.slow_print("What does the term kaizen mean?")
@@ -550,10 +557,10 @@ the project’s objectives and management.")
             answer = f.get_input()
 
             if (answer != "1"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
 
         elif (n == 10):
             f.slow_print("What are the five stages in Tuckman’s model of team development, in chronological order?")
@@ -564,10 +571,75 @@ the project’s objectives and management.")
             answer = f.get_input()
 
             if (answer != "1"):
-                print("That is incorrect!!!")
+                f.slow_print("That is incorrect!!!\n")
                 self.player.change_hp(-(5 - self.player.stats["defense"]))
             else:
-                print("Professor Mark is pleased by your answer.")
+                f.slow_print("Professor Mark is pleased by your answer.\n")
+
+class HowardGillman(Character):
+    def __init__(self, player):
+        super().__init__("Howard Gillman", 50)
+        self.player = player
+        self.charge = 0
+        self.stunned = False
+
+    def event(self):
+        action = ""
+        f.slow_print("You must defeat the Chancellor!!!\n")
+        while (self.alive):
+            print("Supreme Chancellor Gillman's Current Health: " + str(self.hp) + "/" + str(self.maxhp))
+            print(self.player.name + "'s Current Health: " + str(self.player.hp) + "/" + str(self.player.maxhp))
+            print("1: Group attack!!!")
+            print("2: Charge up a big attack")
+            print("3: Make it rain")
+
+            action = f.get_input()
+
+            if (self.stunned == True):
+                self.stunned = False
+                break
+            elif (self.charge > 0):
+                f.slow_print("You unleash a big attack and hit him with your weapons all at once!\n")
+                self.change_hp(-(10 + self.player.stats["attack"]))
+                self.charge = 0
+            elif (action == "1"):
+                n = random.choices([1, 2, 3, 4, 5], [0.2, 0.1, 0.3, 0.3, 0.1])[0]
+                f.slow_print("The five of you attack all at once!! " + str(n) + " of your attacks hit!\n")
+                self.change_hp(-(n * self.player.stats["attack"]))
+            elif (action == "2"):
+                f.slow_print("You begin to charge up a big attack...\n")
+                self.charge = 1
+            elif (action == "3"):
+                f.slow_print("You throw wads of cash at him! You take a moment to bandage up while he's distracted...\n")
+                self.player.change_hp(5)
+            if (self.player.check_dead()):
+                f.slow_print("The Chancellor lifts your lifeless body...")
+                return self.player
+            if (self.check_dead()):
+                    self.alive = False
+                    break
+            self.enemy_action()
+
+
+        f.slow_print("The weird dude falls to the ground twitching... You approach the body and realize \
+that's not some hungry dude that's a zombie!\n")
+
+        return self.player
+
+    def enemy_action(self):
+        action = random.choices([1, 2, 3], [0.5, 0.2, 0.3])[0]
+        if (action == 1):
+            f.slow_print("Chancellor Gillman brings down his heavy fist upon you!!\n")
+            self.player.change_hp(-(8 - self.player.stats["defense"]))
+        elif (action == 2):
+            f.slow_print("Chancellor Gillman decides to raise the cost of tuition... AHHHHHHHHHHHHH\n")
+            f.slow_print("Some of your life force is drained...\n")
+            self.player.change_max_hp(-2)
+        elif (action == 3):
+            f.slow_print("The Chancellor releases a piercing roar, you're frozen with shock.")
+            self.player.change_hp(-(3 - self.player.stats["defense"]))
+            self.stunned = True
+
 
 
 # class SuperZombie(Character):

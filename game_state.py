@@ -81,7 +81,7 @@ The building is secure for the most part; everyone that’s part of this small b
 You’re lucky to have seen me run in the one entrance that’s not yet boarded up! Quickly, put this cart in front of the door then meet us all in the \n\
 counselor’s office. Wasi says he knows a guy in Bio that might have an idea of what’s going on here. There might still be hope for us all!” \n\
 As you supplant the supplies cart in the way of the door, you ponder this thought. ‘A guy in bio’… do they have a cure? You chuckle a bit at your \n\
-miraculous luck and join the rest of the crew holed up in the conference room. \n\
+miraculous luck and join the rest of the crew holed up in the conference room. \n\n\
 As you enter the modestly-sized room on the third floor, Jerry waves you in and pats at a seat, the chairs arranged in a haphazard circle. \n\
 “All right, y’all. This is a lucky survivor I found outside. Don’t worry, I made sure they’re clean. Their name is \n" \
 + self.player.name + ". " + self.player.name + ", this is Dejian, Wasi, and Kyle. As far as I know, we’re the only survivors in this mess. \n\
@@ -91,7 +91,7 @@ of them told us to get before joining them there. That was some time ago, though
 Dejian follows. “There are a few materials that we’ll need to make the cure. The idea is a back-mounted tank that holds the cure with a handheld nozzle. \n\
 We’ll run around and spray the zombies with the cure! However, we’re going to need the materials for the cure, three things to be exact. \n\
 Zombie flesh, Gas masks, and a Chemically-resistant spray tank. With the whole campus falling apart, we don’t really have a choice here; we’re going to \n\
-have to split up.”\n\
+have to split up.”\n\n\
 Another survivor, Kyle, speaks up. “The zombie outbreak started at Rowland Hall, at least that’s what we think. If we’re going to find the most \n\
 zombified flesh of all zombified flesh, it’s going to be there. Gas masks can be found in many different locations across the scientific side here, \n\
 but the natural sciences building will have those in spades. A chemically-resistant spray tank is an oddity, but we should be able to find one in \n\
@@ -100,8 +100,8 @@ He points to a scooter that’s standing at the side of the stand. He then looks
 “That scooter’s mine but it might as well be ours at this point. It’s electric and big enough to carry two people, but it’s only got enough \n\
 power to go to one of these places and back. It should get you past all the pathway shamblers without a problem, although I don’t think it’d be all \n\
 that useful when fighting in the actual buildings. I’ll let you use it since you managed to survive getting here all alone unlike the rest of us. \n\
-But where are you headed?\n\
-You can go to Rowland Hall with Jerry, Natural Sciences with Dejian, or Physical Sciences with Wasi. Where are you going?")
+But where are you headed?\n\n\
+You can go to Rowland Hall with Jerry, Natural Sciences with Dejian, or Physical Sciences with Wasi. Where are you going?\n")
 
 
         OutsideICS = l.Location("WHERE GO")
@@ -125,7 +125,7 @@ You can go to Rowland Hall with Jerry, Natural Sciences with Dejian, or Physical
         BioSci = l.Location("You approach BioSci and see a large, bald figure. Howard Gillman stands outside BioSci roaring in pleasure \n\
 as he leaves the building with bags of cash. He seems to have kept his mind and is now towering over the zombified students. \n\
 He becomes angry at their incompetence and slaughters them one by one. Soon there is only Gillman and his gold left.  Dejian shouts, \n\
-“We have to fight him now while there is no other zombies around him.” The group launch their final attack.")
+“We have to fight him now while there is no other zombies around him.” The group launch their final attack.", "HowardGillman")
 
         # Split with Continue?
         RingRoad = l.Location("As they make their way through the Ring Road, they can hear the sound of growling and moaning in the distance. \n\
@@ -154,9 +154,9 @@ Zyr. You exchange stories about what happened, and hatch a plan to make it to Bi
  Jerry, Deijan, Wasi, and you have all made it back. Knowing it could be the last time you all are together, Deijan pours you all a glass of \n\
  Zyr. You exchange stories about what happened, and hatch a plan to make it to BioSci. Everyone rests, and then heads out to BioSci.\n")
         
-        ICSfromPhySci = l.Location("You return to ICS and reconvene with the group as you lug the heavy Chem Tank up the steps. \
-You notice as you arrive that the other members of your group have already returned with Zombie Flesh and Gas Masks. \
-Jerry, Deijan, Wasi, and you have all made it back. Knowing it could be the last time you all are together, Deijan pours you all a glass of \
+        ICSfromPhySci = l.Location("You return to ICS and reconvene with the group as you lug the heavy Chem Tank up the steps. \n\
+You notice as you arrive that the other members of your group have already returned with Zombie Flesh and Gas Masks. \n\
+Jerry, Deijan, Wasi, and you have all made it back. Knowing it could be the last time you all are together, Deijan pours you all a glass of \n\
 Zyr. You exchange stories about what happened, and hatch a plan to make it to BioSci. Everyone rests, and then heads out to BioSci.\n")
 
         ICSfromRowland.addChildren([(RingRoad, "Continue to Ring Road")])
@@ -219,11 +219,26 @@ the hallway. Jerry, the brave man he is, decides to lure it out into the open...
 ######################################################################################## Physical Sciences
         PhysicalScience.addChildren([(ICSfromPhySci, "Go back to ICS")])
 
-######################################################################################## 
+######################################################################################## BioSci
+        Ending1 = l.Location("You masterfully defeat Howard Gillman with your weapon and rush forward with the rest of the doomsday preppers into the \n\
+BioSci labs. As your group enters the lab, you see two students ready to receive your materials. They introduce themselves as Dharren and Matthew \n\
+and quickly utilize the materials in their research for the cure. They assure you that they’ll have the cure ready to deploy in a few moments time \n\
+as they have already been working on it since the first zombie sighting was reported. You patiently wait while vigilantly guarding the entrances with the \n\
+rest of the group. Dharren and Matt finally come back with the chem tanks all filled with the finished cure and encourage you to start spraying the cure \n\
+around campus immediately. \n\n\
+The team then assembles and equip the gas masks and chem tanks as they prepare to spray the campus zombies with the cure. The group boldly exits the \n\
+BioSci building and disperses as they strategically cure the infected with the newly manufactured cure. Just as the group cures the final zombie, the \n\
+local law enforcement and various government agencies arrive surprised at the sight of normal college students on campus. They hear cheering amongst a \n\
+massive circle of students in Aldrich Park and hurry to investigate the commotion. They arrive and see a small group of students inside the circle. \n\
+In the middle of the crowd, was the crew that was responsible for curing the infection. You, Jerry, Kyle, Dharren, Matthew, Wasi, and Dejian were being \n\
+celebrated as the heroes of UCI with crowds cheering and showering your group with flowers. A strong sense of pride, joy, and relief surge through the \n\
+group as you guys realize you have successfully survived the apocalypse. You guys successfully stopped the ZotRot!")
+
+        BioSci.addChildren([(Ending1, "Continue...")])
 
 
 ######################################################################################## Init
-        self.currentLocation = RingRoad
+        self.currentLocation = AldrichPark
         self.pastLocations.append(AldrichPark)
 
         
